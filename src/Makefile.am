@@ -1,0 +1,42 @@
+# Uncomment for debugging
+DEBUG = -g
+PTHREADS_CFLAGS = -pthread
+
+#CFLAGS += $(DEBUG)
+
+lib_LTLIBRARIES = librelp.la
+
+librelp_la_SOURCES = \
+	librelp.h \
+	relp.c \
+	relp.h \
+	relpsess.c \
+	relpsess.h \
+	relpframe.c \
+	relpframe.h \
+	tcp.c \
+	tcp.h \
+	sendq.c \
+	sendq.h \
+	sendbuf.c \
+	sendbuf.h \
+	offers.c \
+	offers.h \
+	relpclt.c \
+	relpclt.h \
+	relpsrv.c \
+	relpsrv.h \
+	scsyslog.c \
+	scrsp.c \
+	copen.c \
+	cclose.c \
+	cserverclose.c \
+	dbllinklist.h \
+	cmdif.h
+librelp_la_CPPFLAGS = $(PTHREADS_CFLAGS) $(GNUTLS_CFLAGS)
+librelp_la_LIBADD = $(rt_libs) $(GNUTLS_LIBS)
+# info on version-info:
+# http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
+librelp_la_LDFLAGS = -version-info 3:0:3
+
+include_HEADERS = librelp.h
